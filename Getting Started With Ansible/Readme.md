@@ -12,6 +12,9 @@ To install Ansible on the control node:
 
 sudo yum install ansible
 
+![image](https://user-images.githubusercontent.com/44756128/113488650-fdd32800-9484-11eb-9401-000e08dd3b80.png)
+
+
 # Configure the ansible User on the Control Node
 Next, we'll configure the ansible user on the control node for ssh shared key access to managed nodes.
 Note: Do not use a passphrase for the key pair.
