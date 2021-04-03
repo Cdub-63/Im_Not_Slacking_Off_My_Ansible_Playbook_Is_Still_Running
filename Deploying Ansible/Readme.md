@@ -121,12 +121,19 @@ vim /home/ansible/git-setup.yml
 Add the following text to the file:
 
 --- # install git on target host
+
 - hosts: workstation
+- 
   become: yes
+  
   tasks:
+  
   - name: install git
+  
     yum:
+    
       name: git
+      
       state: latest
       
 Save and exit the file (:wq in vim).
