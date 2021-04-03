@@ -8,6 +8,7 @@ Log in to the control node using ssh, cloud_user, and the provided public IP add
 ssh cloud_user@<PUBLIC IP>
 
 To install Ansible on the control node:
+
 sudo yum install ansible
 
 # Configure the ansible User on the Control Node
@@ -25,6 +26,7 @@ ssh-copy-id node2
 Next, we'll create a simple Ansible inventory on the control node in /home/ansible/inventory containing node1 and node2.
 
 On the control host:
+
 sudo su - ansible
 touch /home/ansible/inventory
 echo "node1" >> /home/ansible/inventory
