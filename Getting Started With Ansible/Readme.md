@@ -21,8 +21,11 @@ Create a key pair for the ansible user on the control host, accepting the defaul
 sudo su - ansible
 
 ssh-keygen
+
 Copy the public key to both node1 and node2:
+
 ssh-copy-id node1
+
 ssh-copy-id node2
 
 # Create a Simple Ansible Inventory
@@ -31,21 +34,28 @@ Next, we'll create a simple Ansible inventory on the control node in /home/ansib
 On the control host:
 
 sudo su - ansible
+
 touch /home/ansible/inventory
+
 echo "node1" >> /home/ansible/inventory
+
 echo "node2" >> /home/ansible/inventory
 
 # Configure sudo Access for Ansible
 Now, we'll configure sudo access for Ansible on node1 and node2 such that Ansible may use sudo for any command with no password prompt.
 
 Log in to node1 as cloud_user and edit the sudoers file to contain appropriate access for the ansible user:
+
 ssh cloud_user@node1
+
 sudo visudo
 
 Add the following line to the file and save:
+
 ansible    ALL=(ALL)       NOPASSWD: ALL
 
 Enter:
+
 logout
 
 Repeat these steps for node2, and then back out to the control node.
@@ -56,8 +66,11 @@ Finally, we'll verify each managed node is able to be accessed by Ansible from t
 Redirect the output of a successful command to /home/ansible/output.
 
 To verify each node, run the following as the ansible user from the control host:
+
 ansible -i /home/ansible/inventory node1 -m ping
+
 ansible -i /home/ansible/inventory node2 -m ping
 
 To redirect output of a successful command to /home/ansible/output:
+
 ansible -i /home/ansible/inventory node1 -m ping > /home/ansible/output
