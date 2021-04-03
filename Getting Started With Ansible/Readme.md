@@ -5,6 +5,7 @@ We'll install Ansible on a control node and configure two managed servers for us
 
 # Install Ansible on the Control Node
 Log in to the control node using ssh, cloud_user, and the provided public IP address and password:
+
 ssh cloud_user@<PUBLIC IP>
 
 To install Ansible on the control node:
@@ -16,6 +17,7 @@ Next, we'll configure the ansible user on the control node for ssh shared key ac
 Note: Do not use a passphrase for the key pair.
 
 Create a key pair for the ansible user on the control host, accepting the defaults when prompted:
+
 sudo su - ansible
 ssh-keygen
 Copy the public key to both node1 and node2:
