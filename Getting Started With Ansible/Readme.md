@@ -45,7 +45,7 @@ Add the following line to the file and save:
 ansible    ALL=(ALL)       NOPASSWD: ALL
 
 Enter:
-logout
+logou
 
 Repeat these steps for node2, and then back out to the control node.
 
