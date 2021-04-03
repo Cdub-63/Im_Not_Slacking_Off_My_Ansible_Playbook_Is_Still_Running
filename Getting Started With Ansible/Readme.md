@@ -19,6 +19,7 @@ Note: Do not use a passphrase for the key pair.
 Create a key pair for the ansible user on the control host, accepting the defaults when prompted:
 
 sudo su - ansible
+
 ssh-keygen
 Copy the public key to both node1 and node2:
 ssh-copy-id node1
@@ -45,7 +46,7 @@ Add the following line to the file and save:
 ansible    ALL=(ALL)       NOPASSWD: ALL
 
 Enter:
-logou
+logout
 
 Repeat these steps for node2, and then back out to the control node.
 
