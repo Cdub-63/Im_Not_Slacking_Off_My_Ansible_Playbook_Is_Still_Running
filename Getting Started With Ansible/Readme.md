@@ -1,12 +1,12 @@
 ![image](https://user-images.githubusercontent.com/44756128/113488442-c87a0a80-9483-11eb-8e61-3a5541b995f9.png)
 
-#Getting Started with Ansible
+# Getting Started with Ansible
 We'll install Ansible on a control node and configure two managed servers for use with Ansible. We will also create a simple inventory and run an Ansible command to verify our configuration is correct.
 
 # Install Ansible on the Control Node
 Log in to the control node using ssh, cloud_user, and the provided public IP address and password:
 
-ssh cloud_user@<PUBLIC IP>
+ssh username@PUBLIC IP
 
 To install Ansible on the control node:
 
