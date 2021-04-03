@@ -7,7 +7,7 @@ Use Securecrt, putty or you local computer's command line utility to SSH into th
 # Install Ansible on the Control Host
 Log in to the Control Host server using ssh:
 
-ssh [<username>]@[<Server_IP>]
+ssh username@Server_IP
   
 Install epel-release and enter y when prompted:
 
