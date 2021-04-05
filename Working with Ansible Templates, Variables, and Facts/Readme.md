@@ -16,7 +16,9 @@ Log into the control node (control1) as the ansible user.
 ![image](https://user-images.githubusercontent.com/44756128/113585399-cafa7280-95f1-11eb-9877-b95d7e04603c.png)
 
 # Create a Template sudoers File
-> [ansible@control1]$ vim /home/ansible/hardened.j2
+```sh
+[ansible@control1]$ vim /home/ansible/hardened.j2
+```
 
 Now that we're in Vim, we'll put these contents in the file:
 ```
@@ -30,7 +32,9 @@ Host_Alias DBSERVERS = {{ groups['database']|join(' ') }}
 ![image](https://user-images.githubusercontent.com/44756128/113585563-0301b580-95f2-11eb-9111-16b0cc55c05c.png)
 
 # Create a Playbook
-> [ansible@control1]$ vim /home/ansible/security.yml
+```sh
+[ansible@control1]$ vim /home/ansible/security.yml
+```
 
 The security.yml file should look like this:
 
@@ -49,13 +53,16 @@ The security.yml file should look like this:
 ![image](https://user-images.githubusercontent.com/44756128/113586450-25480300-95f3-11eb-81e7-6d6efed9ceb2.png)
 
 # Run the Playbook
-> [ansible@control1]$ ansible-playbook /home/ansible/security.yml
+```sh
+[ansible@control1]$ ansible-playbook /home/ansible/security.yml
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113586206-d69a6900-95f2-11eb-9778-89404e011e3b.png)
 
 The output will show that everything deployed fine, but we can check locally to make sure. Let's become root (with sudo su -) and then read our file:
-
-> [root@control1]$ cat /etc/sudoers.d/hardened
+```sh
+[root@control1]$ cat /etc/sudoers.d/hardened
+```
 
 The custom IP and host aliases are in there.
 
