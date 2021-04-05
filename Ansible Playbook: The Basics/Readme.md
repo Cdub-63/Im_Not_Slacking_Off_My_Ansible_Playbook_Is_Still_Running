@@ -21,26 +21,26 @@ Log into the control1 server, become the ansible user (su - ansible) and we can 
 
 # Create an inventory in /home/ansible/inventory That Contains a Host Group Named web. The web Group Should Contain node1 and node2
 Use Vim or echo to create the inventory file:
-
+```sh
 [ansible@control1]$ echo "[web]" >> /home/ansible/inventory
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113514406-f585f600-9533-11eb-8751-b07d9a07c6a8.png)
 
 ![image](https://user-images.githubusercontent.com/44756128/113514443-4a297100-9534-11eb-9fd2-d64bbc1cc003.png)
 
 It should contain this when we're done:
-
+```
 [web]
-
 node1
-
 node2
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113514458-5f060480-9534-11eb-800b-3c32e9c18c77.png)
 
 # Create a Playbook in /home/ansible/web.yml
 Using Vim, we'll create our web.yml file with these contents:
-
+```yml
 ---
 - hosts: web
   become: yes
@@ -53,7 +53,8 @@ Using Vim, we'll create our web.yml file with these contents:
       get_url: url=http://repo.example.com/website.tgz dest=/tmp/website.tgz
     - name: install website
       unarchive: remote_src=yes src=/tmp/website.tgz dest=/var/www/html/
- 
+```
+
 ![image](https://user-images.githubusercontent.com/44756128/113514472-79d87900-9534-11eb-8e9b-93bc6e94219a.png)
 
 ![image](https://user-images.githubusercontent.com/44756128/113514501-a7252700-9534-11eb-9160-b2c42cb55cbd.png)
@@ -61,7 +62,9 @@ Using Vim, we'll create our web.yml file with these contents:
 ![image](https://user-images.githubusercontent.com/44756128/113514529-c459f580-9534-11eb-9da6-88d3175bdccd.png)
       
 # Verify the Work by Executing the Playbook Using the Inventory
+```sh
 [ansible@control1]$ansible-playbook -i /home/ansible/inventory /home/ansible/web.yml
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113514572-16028000-9535-11eb-8757-8ff996e0bc51.png)
 
