@@ -5,13 +5,16 @@ We'll install Ansible on a control node and configure two managed servers for us
 
 # Install Ansible on the Control Node
 Log in to the control node using ssh.
-> ssh username@PUBLIC IP
+```sh
+ssh username@PUBLIC IP
+```
 
 To install Ansible on the control node:
-> sudo yum install ansible
+```sh
+sudo yum install ansible
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113488650-fdd32800-9484-11eb-9401-000e08dd3b80.png)
-
 
 # Configure the ansible User on the Control Node
 Next, we'll configure the ansible user on the control node for ssh shared key access to managed nodes.
@@ -62,8 +65,9 @@ ansible    ALL=(ALL)       NOPASSWD: ALL
 ![image](https://user-images.githubusercontent.com/44756128/113488812-011ae380-9486-11eb-9310-c825d7a69cb9.png)
 
 Enter:
-> logout
-
+```sh
+logout
+```
 Repeat these steps for node2, and then back out to the control node.
 
 # Verify Each Managed Node Is Accessible
@@ -79,6 +83,8 @@ ansible -i /home/ansible/inventory node2 -m ping
 ![image](https://user-images.githubusercontent.com/44756128/113488873-6ec70f80-9486-11eb-8f49-24a7088cbd67.png)
 
 To redirect output of a successful command to /home/ansible/output:
-> ansible -i /home/ansible/inventory node1 -m ping > /home/ansible/output
+```sh
+ansible -i /home/ansible/inventory node1 -m ping > /home/ansible/output
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113488912-a930ac80-9486-11eb-84b7-e7b970020395.png)
