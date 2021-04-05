@@ -25,13 +25,16 @@ Log into the control node (control1) as the ansible user.
 
 ![image](https://user-images.githubusercontent.com/44756128/113581546-e3b45980-95ec-11eb-8ce5-0e11b9a354e2.png)
 
-
 # Create a playbook: /home/ansible/report.yml
 Create the file with an echo command:
-> [ansible@control1]$ echo "---" >> /home/ansible/report.yml
+```sh
+[ansible@control1]$ echo "---" >> /home/ansible/report.yml
+```
 
 Using a text editor, such as vim, edit /home/ansible/report.yml
-> [ansible@control1]$ vim /home/ansible/report.yml
+```sh
+[ansible@control1]$ vim /home/ansible/report.yml
+```
 
 # Configure the Playbook to Download a File and Output a Message
 First, we'll specify our host and tasks (name, and debug message):
@@ -114,29 +117,39 @@ We can use the replace module for this task, and we'll sneak it in between the g
 
 # Verify Configuration by Running the Playbook
 We can run the playbook with this:
-> [ansible@control1]$ ansible-playbook /home/ansible/report.yml
+```sh
+[ansible@control1]$ ansible-playbook /home/ansible/report.yml
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113582457-0430e380-95ee-11eb-8feb-6a2111072c59.png)
 
 If all went well, we can read the downloaded text file:
-> [ansible@control1]$ cat /home/ansible/transaction_list
+```sh
+[ansible@control1]$ cat /home/ansible/transaction_list
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113582569-23c80c00-95ee-11eb-8cc9-edf7b3833431.png)
 
 The file looks ok. Let's read the original, up where it sits on l33t.com:
-> [ansible@control1]$ curl apps.l33t.com/transaction_list
+```sh
+[ansible@control1]$ curl apps.l33t.com/transaction_list
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113582652-40644400-95ee-11eb-875c-287f210f1f47.png)
 
 We'll see instances of #BLANKLINE there that our playbook actually turned into new lines.
 
 Now we'll test to see how gracefully we deal with errors. We'll shut l33t.com down:
-> [ansible@control1]$ ./scripts/change_l33t.sh
+```sh
+[ansible@control1]$ ./scripts/change_l33t.sh
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113582709-53771400-95ee-11eb-945d-3f69d709954b.png)
 
 Then we can run our playbook again:
-> [ansible@control1]$ ansible-playbook /home/ansible/report.yml
+```sh
+[ansible@control1]$ ansible-playbook /home/ansible/report.yml
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113582796-6db0f200-95ee-11eb-95f2-b84b9497b1ab.png)
 
