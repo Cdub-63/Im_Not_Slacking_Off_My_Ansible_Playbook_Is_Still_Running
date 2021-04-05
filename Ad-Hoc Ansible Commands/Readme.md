@@ -19,36 +19,45 @@ If we read the userlist.txt file in our home directory, we'll see consultant and
 
 ![image](https://user-images.githubusercontent.com/44756128/113512896-822cb600-952c-11eb-864d-61289da5f1e5.png)
 
+```sh
 [ansible@control1]$ ansible dbsystems -b -m user -a "name=consultant"
-
 [ansible@control1]$ ansible dbsystems -b -m user -a "name=supervisor"\
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113512944-bdc78000-952c-11eb-83c5-5c5e2654ea7b.png)
 
 # Place Key Files in the Correct Location, /home/$USER/.ssh/authorized_keys, on Hosts in dbsystems
+```sh
 [ansible@control1]$ ansible dbsystems -b -m file -a "path=/home/consultant/.ssh state=directory owner=consultant group=consultant mode=0755"
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113512975-e2bbf300-952c-11eb-84f0-9d1fe7bedfb7.png)
 
+```sh
 [ansible@control1]$ ansible dbsystems -b -m copy -a "src=/home/ansible/keys/consultant/authorized_keys dest=/home/consultant/.ssh/authorized_keys mode=0600 owner=consultant group=consultant"
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113513010-1434be80-952d-11eb-9cbf-453412abdb4c.png)
 
+```sh
 [ansible@control1]$ ansible dbsystems -b -m file -a "path=/home/supervisor/.ssh state=directory owner=supervisor group=supervisor mode=0755"
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113513030-29a9e880-952d-11eb-8415-27f2ef68311b.png)
 
+```sh
 [ansible@control1]$ ansible dbsystems -b -m copy -a "src=/home/ansible/keys/supervisor/authorized_keys dest=/home/supervisor/.ssh/authorized_keys mode=0600 owner=supervisor group=supervisor"
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113513040-3c242200-952d-11eb-9cbe-9d8599a4a2b6.png)
 
 # Ensure auditd Is Enabled and Running on All Hosts
+```sh
 [ansible@control1]$ ansible all -b -m service -a "name=auditd state=started enabled=yes"
+```
 
 ![image](https://user-images.githubusercontent.com/44756128/113513086-7ab9dc80-952d-11eb-8603-7cfdd7b0f51c.png)
 
 ![image](https://user-images.githubusercontent.com/44756128/113513091-87d6cb80-952d-11eb-954a-615d3f6442f9.png)
 
 ![image](https://user-images.githubusercontent.com/44756128/113513095-91f8ca00-952d-11eb-9277-9c3d3e1b85d7.png)
-
-
