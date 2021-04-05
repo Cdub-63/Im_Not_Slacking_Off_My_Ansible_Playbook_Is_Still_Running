@@ -79,8 +79,6 @@ ansible -i /home/ansible/inventory node2 -m ping
 ![image](https://user-images.githubusercontent.com/44756128/113488873-6ec70f80-9486-11eb-8f49-24a7088cbd67.png)
 
 To redirect output of a successful command to /home/ansible/output:
-
-ansible -i /home/ansible/inventory node1 -m ping > /home/ansible/output
+> ansible -i /home/ansible/inventory node1 -m ping > /home/ansible/output
 
 ![image](https://user-images.githubusercontent.com/44756128/113488912-a930ac80-9486-11eb-84b7-e7b970020395.png)
-
